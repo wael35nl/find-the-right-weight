@@ -1,38 +1,200 @@
-.App {
+.container {
+  height: 99.5vh;
+  overflow: auto;
+  border: 20px dashed rgb(255, 215, 0);
+  background-image: linear-gradient(
+    rgba(255, 215, 0, .1), rgba(135, 206, 235, .5), rgba(135, 206, 235, .5), rgba(135, 206, 235, .5), rgba(255, 215, 0, .1)
+  );
+  display: grid;
+  grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
+  place-items: center;
+  padding: 1em;
+}
+
+.info, .control {
+  background-color: rgb(100, 100, 200);
+  border-radius: 10px;
+  padding: 1em;
+  color: rgb(250, 250, 250);
+  font-size: 1.25rem;
+  word-spacing: 0.5rem;
+  letter-spacing: 0.5rem;
+  display: grid;
+  place-items: center;
+  gap: 1.5rem;
+  min-height: 75%;
+}
+
+.control {
+  background-color: transparent;
+  height: 100%;
+  padding-top: 0;
+}
+
+.info > h2 {
+  text-decoration: underline dotted;
+  text-underline-offset: 5px;
+}
+
+.info h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.info p, .info ol {
+  padding-left: 2em;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  letter-spacing: 0.25rem;
+  line-height: 1.75rem;
+  font-weight: 100;
+  color: rgb(255, 215, 0);
+}
+
+.info ol li:first-child {
+  margin-bottom: 0.75rem;
+}
+
+.info:nth-child(5) {
+  font-size: 2rem;
+}
+
+.info:nth-child(5) div p {
+  padding: 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.info:nth-child(5) div:nth-child(2) {
+  color: rgb(255, 215, 0);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.info:nth-child(5) div:nth-child(3), .info:nth-child(5) div:nth-child(3) p {
+  color: rgb(0, 240, 0);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.info:nth-child(5) div:nth-child(4), .info:nth-child(5) div:nth-child(4) p {
+  color: rgb(255, 75, 75);
+}
+
+.control > h2 {
+  align-self: start;
+  background-color: rgb(100, 100, 200);
+  color: rgb(255, 215, 0);
+  padding: 1em;
+  border-radius: 50%;
+  font-size: 2.5rem;
+}
+
+button {
+  background-color: rgb(250, 250, 250);
+  color: rgb(100, 100, 200);
+  font-size: 2.5rem;
+  padding: 0.25em;
+  border: 0;
+  border-radius: 7.5px;
+  box-shadow: 1.5px 1.5px 2px 1px rgb(128, 128, 128);
+  opacity: 0.75;
+  transition: 0.3s;
+}
+
+button:hover {
+  opacity: 1;
+  transform: scale(1.025);
+}
+
+button:disabled {
+  background-color: rgb(128, 128, 128);
+  color: rgb(255, 215, 0);
+  box-shadow: none;
+  opacity: 0.75;
+  transform: scale(1);
+}
+
+.stand {
+  width: 100%;
+  min-height: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.frame, .indicator {
+  background-color: rgb(100, 100, 200);
+  width: 45%;
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.5em;
+  border-radius: 10px;
+}
+
+.frame:first-child {
+  padding-right: 0;
+}
+
+.frame:nth-child(2) {
+  padding-left: 0;
+}
+
+.indicator {
+  background-color: transparent;
+  width: 20%;
+}
+
+.indicator:first-child {
+  padding-right: 0;
+}
+
+.indicator:nth-child(2) {
+  padding-left: 0;
+}
+
+.frame p, .indicator p {
+  font-size: 12.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.indicator p {
+  justify-content: center;
+  color: transparent;
+}
+
+.indicator:first-child p {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 35%;
+  border-bottom-left-radius: 35%;
+  margin-right: 0.15rem;
+}
+
+.indicator:nth-child(2) p {
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-top-right-radius: 35%;
+  border-bottom-right-radius: 35%;
+  margin-left: 0.15rem;
+}
+
+.weight__selector {
+  background-color: rgb(100, 100, 200);
+  width: 45%;
+  padding: 0.5em;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 2rem;
+  padding-top: 2.5em;
+  border-radius: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.weight__selector select {
+  border-radius: 7.5px;
+  background-color: rgb(255, 215, 0);
+  color: rgb(100, 100, 200);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.weight__selector p {
+  text-orientation: upright;
+  writing-mode: vertical-lr;
+  margin: auto;
+  color: rgb(255, 215, 0);
+  font-size: 2rem;
 }
