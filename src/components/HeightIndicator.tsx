@@ -18,13 +18,13 @@ const HeightIndicator = ({gameStart, selectedWeight, confirmSelectedWeight, targ
                 color: `${
                     gameStart && selectedWeight === '0' && elm !== target ?
                     'rgb(100, 100, 200)'
-                    : (gameStart && confirmSelectedWeight === '0' && elm === target && selectedWeight === '0') ||
-                    (!gameStart && confirmSelectedWeight === '0' && elm === target && selectedWeight !== '0') ?
+                    : (gameStart && selectedWeight === '0' && confirmSelectedWeight === '0' && elm === target) ||
+                    (!gameStart && selectedWeight !== '0' && confirmSelectedWeight === '0' && elm === target) ?
                     'rgb(255, 215, 0)'
-                    : !gameStart && elm === target && selectedWeight !== '0' ?
+                    : !gameStart && selectedWeight !== '0' && elm === target ?
                     elm === Number(selectedWeight) / 2.5 ?
                     'rgb(0, 240, 0)' : 'rgb(255, 215, 0)'
-                    : !gameStart && elm !== target && elm === Number(selectedWeight) / 2.5 && confirmSelectedWeight !== '0' ?
+                    : !gameStart && elm === Number(selectedWeight) / 2.5 && confirmSelectedWeight !== '0' ?
                     'rgb(255, 75, 75)' : 'rgb(250, 250, 250)'
                 }`}}><span>{elm < 10 ? `0${elm}` : elm}</span> <span>cm</span> <span>--</span>
             </p>
@@ -32,15 +32,14 @@ const HeightIndicator = ({gameStart, selectedWeight, confirmSelectedWeight, targ
           indicator: indicators.map(
             (elm, i) => <p key={i} style={{
                 backgroundColor: `${
-                    !gameStart && elm === 1 && selectedWeight === '0' ?
+                    !gameStart && selectedWeight === '0' && elm === 1 ?
                     'rgb(100, 100, 200)'
                     : ((gameStart && selectedWeight === '0') ||
-                    (!gameStart && selectedWeight !== '0'))
-                    && elm === target && confirmSelectedWeight === '0' ?
+                    (!gameStart && selectedWeight !== '0')) && elm === target && confirmSelectedWeight === '0' ?
                     'rgb(255, 215, 0)'
                     : Number(confirmSelectedWeight) / 2.5 !== elm ?
                     'transparent'
-                    : !gameStart && selectedWeight !== '0' && confirmSelectedWeight !== '0' && elm !== target ?
+                    : !gameStart && elm !== target ?
                     'rgb(255, 75, 75)' : 'rgb(0, 240, 0)'
                 }`}}>{elm}
             </p>

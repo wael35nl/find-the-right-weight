@@ -22,14 +22,15 @@ const WeightIndicator = ({
           indicators: shuffleArray(indicators, gameStart, selectedWeight, confirmSelectedWeight).map(
             (elm, i) => <p key={i} style={{
                 color: `${
-                    gameStart && selectedWeight !== '0' && selectedWeight !== String(elm) ?
+                    gameStart && selectedWeight !== String(elm) ?
                     'rgb(100, 100, 200)'
-                    : selectedWeight !== '0' && selectedWeight === String(elm) && confirmSelectedWeight === '0' ?
+                    : selectedWeight === String(elm) && confirmSelectedWeight === '0' ?
                     'rgb(255, 215, 0)'
-                    : selectedWeight !== '0' && selectedWeight === String(elm) && confirmSelectedWeight !== '0' ?
+                    : selectedWeight === String(elm) && confirmSelectedWeight !== '0' ?
                     elm / 2.5 === target ?
                     'rgb(0, 240, 0)' : 'rgb(255, 75, 75)'
-                    : !gameStart && selectedWeight !== '0' && selectedWeight !== String(elm) ? elm / 2.5 === target ?
+                    : !gameStart && selectedWeight !== '0' ?
+                    elm / 2.5 === target ?
                     (
                         confirmSelectedWeight !== '0' ?
                         'rgb(0, 240, 0)' : 'rgb(100, 100, 200)'
