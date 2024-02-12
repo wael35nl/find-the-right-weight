@@ -12,6 +12,7 @@ import scale1 from './assets/images/scale1.png';
 import scale2 from './assets/images/scale2.gif';
 
 import './App.css';
+import Calculation from './components/Calculation';
 
 const App = () => {
 
@@ -38,7 +39,18 @@ const App = () => {
       />
       <div className='control'>
         <h2>FIND THE RIGHT WEIGHT</h2>
-        <img src={selectedWeight === '0' ? scale1 : (confirmSelectedWeight !== '0' ? scale1 : scale2)} alt="scale" />
+        <Calculation
+          gameStart={gameStart}
+          selectedWeight={selectedWeight}
+          confirmSelectedWeight={confirmSelectedWeight}
+          target={target}
+        />
+        {
+          (confirmSelectedWeight === '0' || (confirmSelectedWeight !== '0' && Number(confirmSelectedWeight) / 2.5 === target)) &&
+          <img src={
+            selectedWeight === '0' ? scale1 : (confirmSelectedWeight !== '0' ? scale1 : scale2)
+          } alt="scale" />
+        }
         <Buttons
           selectedWeight={selectedWeight}
           gameStart={gameStart}
