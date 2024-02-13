@@ -29,55 +29,60 @@ const App = () => {
   }, [gameStart, selectedWeight]);
 
   return (
-    <div className='container'>
-      <Info />
-      <HeightIndicator
-        gameStart={gameStart}
-        selectedWeight={selectedWeight}
-        confirmSelectedWeight={confirmSelectedWeight}
-        target={target}
-      />
-      <div className='control'>
-        <h2>FIND THE RIGHT WEIGHT</h2>
-        <Calculation
+    <>
+      <div className='container'>
+        <Info />
+        <HeightIndicator
           gameStart={gameStart}
           selectedWeight={selectedWeight}
           confirmSelectedWeight={confirmSelectedWeight}
           target={target}
         />
-        {
-          (confirmSelectedWeight === '0' || (confirmSelectedWeight !== '0' && Number(confirmSelectedWeight) / 2.5 === target)) &&
-          <img src={
-            selectedWeight === '0' ? scale1 : (confirmSelectedWeight !== '0' ? scale1 : scale2)
-          } alt="scale" />
-        }
-        <Buttons
-          selectedWeight={selectedWeight}
+        <div className='control'>
+          <h2>FIND THE RIGHT WEIGHT</h2>
+          <Calculation
+            gameStart={gameStart}
+            selectedWeight={selectedWeight}
+            confirmSelectedWeight={confirmSelectedWeight}
+            target={target}
+          />
+          {
+            (confirmSelectedWeight === '0' || (confirmSelectedWeight !== '0' && Number(confirmSelectedWeight) / 2.5 === target)) &&
+            <img src={
+              selectedWeight === '0' ? scale1 : (confirmSelectedWeight !== '0' ? scale1 : scale2)
+            } alt="scale" />
+          }
+          <Buttons
+            selectedWeight={selectedWeight}
+            gameStart={gameStart}
+            setGameStart={setGameStart}
+            setConfirmSelectedWeight={setConfirmSelectedWeight}
+            confirmSelectedWeight={confirmSelectedWeight}
+            setSelectedWeight={setSelectedWeight}
+            target={target}
+            setTarget={setTarget}
+            result={result}
+            setResult={setResult}
+          />
+        </div>
+        <WeightIndicator
           gameStart={gameStart}
-          setGameStart={setGameStart}
-          setConfirmSelectedWeight={setConfirmSelectedWeight}
+          selectedWeight={selectedWeight}
           confirmSelectedWeight={confirmSelectedWeight}
-          setSelectedWeight={setSelectedWeight}
           target={target}
-          setTarget={setTarget}
-          result={result}
-          setResult={setResult}
+          setSelectedWeight={setSelectedWeight}
+          setGameStart={setGameStart}
+        />
+        <Results
+          attempts={result.attempts}
+          right={result.right}
+          wrong={result.wrong}
         />
       </div>
-      <WeightIndicator
-        gameStart={gameStart}
-        selectedWeight={selectedWeight}
-        confirmSelectedWeight={confirmSelectedWeight}
-        target={target}
-        setSelectedWeight={setSelectedWeight}
-        setGameStart={setGameStart}
-      />
-      <Results
-        attempts={result.attempts}
-        right={result.right}
-        wrong={result.wrong}
-      />
-    </div>
+      <div className='alternative'>
+        <h1>THE SCREEN IS TOO NARROW, PLEASE OPEN THE GAME ON A SCREEN WIDER THAN 700 PIXELS</h1>
+      </div>
+    </>
   )
 }
 

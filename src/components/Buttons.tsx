@@ -1,4 +1,4 @@
-import { ResultProps } from "../types/types"
+import { ResultProps } from "../types/types";
 
 type ButtonsProps = {
   selectedWeight: string

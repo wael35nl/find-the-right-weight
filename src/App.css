@@ -1,4 +1,4 @@
-.container {
+.container, .alternative {
   height: 99.5vh;
   overflow: auto;
   border: 20px dashed rgb(255, 215, 0);
@@ -9,6 +9,19 @@
   grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
   place-items: center;
   padding: 1em;
+}
+
+.alternative {
+  display: none;
+  grid-template-columns: none;
+  padding: 5em;
+}
+
+.alternative h1 {
+  text-align: center;
+  font-size: 4rem;
+  line-height: 8rem;
+  word-spacing: 4rem;
 }
 
 .info, .control {
@@ -82,6 +95,7 @@
   padding: 1em;
   border-radius: 50%;
   font-size: 2.5rem;
+  text-align: center;
 }
 
 .control h3 {
@@ -209,4 +223,44 @@ button:disabled {
   margin: auto;
   color: rgb(255, 215, 0);
   font-size: 2rem;
+}
+
+@media all and (max-width: 1200px) {
+  .control > h2 {
+    padding: 0.75em;
+    font-size: 1.75rem;
+  }
+}
+
+@media all and (max-width: 1000px) {
+  .info {
+    font-size: 1rem;
+  }
+  .frame, .weight__selector {
+    width: 60%;
+  }
+  .indicator {
+    width: 35%;
+  }
+}
+
+@media all and (max-width: 750px) {
+  .frame, .weight__selector {
+    width: 65%;
+    gap: 0.2rem;
+    padding: 0.2em;
+  }
+  .indicator {
+    width: 30%;
+  }
+}
+
+@media all and (max-width: 700px) {
+  .container {
+    display: none;
+  }
+  .alternative {
+    display: grid;
+    color: rgb(255, 0, 0);
+  }
 }
