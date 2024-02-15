@@ -4,15 +4,15 @@ import { ResultProps } from './types/types';
 
 import Info from './components/Info';
 import HeightIndicator from './components/HeightIndicator';
-import WeightIndicator from './components/WeightIndicator';
+import Calculation from './components/Calculation';
 import Buttons from './components/Buttons';
+import WeightIndicator from './components/WeightIndicator';
 import Results from './components/Results';
 
 import scale1 from './assets/images/scale1.png';
 import scale2 from './assets/images/scale2.gif';
 
 import './App.css';
-import Calculation from './components/Calculation';
 
 const App = () => {
 

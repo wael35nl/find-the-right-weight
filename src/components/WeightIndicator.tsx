@@ -1,5 +1,7 @@
 import { shuffleArray } from "../helper";
 
+import mouse_click from '../assets/sounds/mouse-click.mp3';
+
 type WeightIndicatorProps = {
     gameStart: boolean
     selectedWeight: string
@@ -12,6 +14,8 @@ type WeightIndicatorProps = {
 const WeightIndicator = ({
                             gameStart, selectedWeight, confirmSelectedWeight, target, setSelectedWeight, setGameStart
                         }: WeightIndicatorProps) => {
+
+    const mouseClick = new Audio(mouse_click);
 
     const weightIndicator = (num1: number, num2: number): {
       indicators: JSX.Element[];
@@ -83,6 +87,7 @@ const WeightIndicator = ({
             <>
               <select onChange={(e) => {
                   setSelectedWeight(e.target.value);
+                  mouseClick.play();
                   setGameStart(!gameStart);
                 }} defaultValue='0'>
                   <option disabled>0</option>

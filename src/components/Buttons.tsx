@@ -1,3 +1,5 @@
+import mouse_click from '../assets/sounds/mouse-click.mp3';
+
 import { ResultProps } from "../types/types";
 
 type ButtonsProps = {
@@ -16,6 +18,8 @@ type ButtonsProps = {
 const Buttons = ({
                   selectedWeight, gameStart, setGameStart, setConfirmSelectedWeight, confirmSelectedWeight, setSelectedWeight, target, setTarget, result, setResult
                 }: ButtonsProps) => {
+
+  const mouseClick = new Audio(mouse_click);
 
   return (
     <>
@@ -41,6 +45,7 @@ const Buttons = ({
             setConfirmSelectedWeight('0');
             setTarget(Math.floor(Math.random() * (30 - 2 + 1)) + 2);
           }
+          mouseClick.play();
         }} disabled={gameStart}>{
           !gameStart && selectedWeight === '0' ?
           'START'
@@ -52,7 +57,10 @@ const Buttons = ({
       </button>
       {
         !gameStart && selectedWeight === '0' && Object.values(result).some(elm => elm > 0) &&
-        <button onClick={() => setResult({attempts: 0, right: 0, wrong: 0})}>RESET RESULTS</button>
+        <button onClick={() => {
+          setResult({attempts: 0, right: 0, wrong: 0});
+          mouseClick.play();
+        }}>RESET RESULTS</button>
       }
       {
         (gameStart || (!gameStart && selectedWeight !== '0')) &&
@@ -68,6 +76,7 @@ const Buttons = ({
             }
             setSelectedWeight('0');
             setConfirmSelectedWeight('0');
+            mouseClick.play();
           }}>{
             (gameStart || (!gameStart && confirmSelectedWeight !== '0')) ?
             'RESTART' : 'CHANGE'
@@ -80,6 +89,7 @@ const Buttons = ({
           setGameStart(false);
           setSelectedWeight('0');
           setConfirmSelectedWeight('0');
+          mouseClick.play();
         }}>END
         </button>
       }
